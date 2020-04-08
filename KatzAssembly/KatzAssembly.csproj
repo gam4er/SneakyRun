@@ -125,7 +125,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)mimikatz_trunk\IV.bin $(ProjectDir)Resources\IV.bin
+    <PreBuildEvent>$(SolutionDir)\Crypt\bin\$(ConfigurationName)\Crypt.exe
+copy $(SolutionDir)mimikatz_trunk\IV.bin $(ProjectDir)Resources\IV.bin
 copy $(SolutionDir)mimikatz_trunk\key.bin $(ProjectDir)Resources\key.bin
 copy $(SolutionDir)mimikatz_trunk\Win32mimikatz.enc $(ProjectDir)Resources\Win32mimikatz.enc
 copy $(SolutionDir)mimikatz_trunk\x64mimikatz.enc $(ProjectDir)Resources\x64mimikatz.enc</PreBuildEvent>

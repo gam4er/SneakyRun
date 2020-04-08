@@ -109,7 +109,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)NonInteractiveMimikatz\$(OutDir)NonInteractiveMimikatz.dll $(ProjectDir)Resources\NonInteractiveMimikatz.dll
+    <PreBuildEvent>$(SolutionDir)\Crypt\bin\$(ConfigurationName)\Crypt.exe
+copy $(SolutionDir)NonInteractiveMimikatz\$(OutDir)NonInteractiveMimikatz.dll $(ProjectDir)Resources\NonInteractiveMimikatz.dll
 copy $(SolutionDir)KatzAssembly\$(OutDir)KatzAssembly.dll $(ProjectDir)Resources\KatzAssembly.dll</PreBuildEvent>
   </PropertyGroup>
 </Project>
