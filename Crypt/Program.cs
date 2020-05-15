@@ -21,18 +21,18 @@ namespace Aes_Example
             myKey = _algorithm.Key;
 
 
-            byte[] W32Mimi = File.ReadAllBytes(@"..\..\..\mimikatz_trunk\Win32\mimikatz.exe");
-            byte[] W32PowKatz = File.ReadAllBytes(@"..\..\..\mimikatz_trunk\Win32\powerkatz.dll");
-            byte[] x64Mimi = File.ReadAllBytes(@"..\..\..\mimikatz_trunk\x64\mimikatz.exe");
-            byte[] x64PowKatz = File.ReadAllBytes(@"..\..\..\mimikatz_trunk\x64\powerkatz.dll");
+            byte[] W32Mimi = File.ReadAllBytes(@"..\..\..\..\mimikatz_trunk\Win32\mimikatz.exe");
+            byte[] W32PowKatz = File.ReadAllBytes(@"..\..\..\..\mimikatz_trunk\Win32\powerkatz.dll");
+            byte[] x64Mimi = File.ReadAllBytes(@"..\..\..\..\mimikatz_trunk\x64\mimikatz.exe");
+            byte[] x64PowKatz = File.ReadAllBytes(@"..\..\..\..\mimikatz_trunk\x64\powerkatz.dll");
 
-            File.WriteAllBytes(@"..\..\..\mimikatz_trunk\Win32mimikatz.enc", Encrypt(W32Mimi));
-            File.WriteAllBytes(@"..\..\..\mimikatz_trunk\Win32powerkatz.enc", Encrypt(W32PowKatz));
-            File.WriteAllBytes(@"..\..\..\mimikatz_trunk\x64mimikatz.enc", Encrypt(x64Mimi));
-            File.WriteAllBytes(@"..\..\..\mimikatz_trunk\x64powerkatz.enc", Encrypt(x64PowKatz));
+            File.WriteAllBytes(@"..\..\..\..\mimikatz_trunk\Win32mimikatz.enc", Encrypt(W32Mimi));
+            File.WriteAllBytes(@"..\..\..\..\mimikatz_trunk\Win32powerkatz.enc", Encrypt(W32PowKatz));
+            File.WriteAllBytes(@"..\..\..\..\mimikatz_trunk\x64mimikatz.enc", Encrypt(x64Mimi));
+            File.WriteAllBytes(@"..\..\..\..\mimikatz_trunk\x64powerkatz.enc", Encrypt(x64PowKatz));
 
-            File.WriteAllBytes(@"..\..\..\mimikatz_trunk\key.bin", myKey);
-            File.WriteAllBytes(@"..\..\..\mimikatz_trunk\IV.bin", myIV);
+            File.WriteAllBytes(@"..\..\..\..\mimikatz_trunk\key.bin", myKey);
+            File.WriteAllBytes(@"..\..\..\..\mimikatz_trunk\IV.bin", myIV);
 
 
 
