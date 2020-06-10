@@ -351,3 +351,18 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+KatzAssembly/Resources/IV.bin
+KatzAssembly/Resources/key.bin
+KatzAssembly/Resources/Win32mimikatz.enc
+KatzAssembly/Resources/x64mimikatz.enc
+mimikatz_trunk/IV.bin
+mimikatz_trunk/key.bin
+mimikatz_trunk/Win32mimikatz.enc
+mimikatz_trunk/Win32powerkatz.enc
+mimikatz_trunk/x64mimikatz.enc
+mimikatz_trunk/x64powerkatz.enc
+NonInteractiveMimikatz/Resources/IV.bin
+NonInteractiveMimikatz/Resources/key.bin
+NonInteractiveMimikatz/Resources/Win32powerkatz.enc
+NonInteractiveMimikatz/Resources/x64powerkatz.enc
+NewApproach/NewApproach.zip

