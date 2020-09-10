@@ -9,16 +9,20 @@ namespace NewApproach
 {
     class NewApproach
     {
+        public static bool Enter = true;
+
         public static void InteractiveMiMi()
         {
             Console.WriteLine("My Pid {0}", Process.GetCurrentProcess().Id);            
             Console.WriteLine("[press enter to create new AppDomain]");
-            Console.ReadLine();
+            if (Enter)
+                Console.ReadLine();
             string NDomain = RandomString(16);
             AppDomain ad = AppDomain.CreateDomain(NDomain);
 
             Console.WriteLine("New AppDomain {0} just was created\nAnd everything stay clear, because AppDomain is empty\n[press enter]", NDomain);
-            Console.ReadLine();
+            if (Enter)
+                Console.ReadLine();
 
             // Loader lives in another AppDomain
             Loader loader = (Loader)ad.CreateInstanceAndUnwrap(
@@ -27,24 +31,39 @@ namespace NewApproach
 
             loader.LoadAssembly(Properties.Resources.KatzAssembly);
 
-            var t = Task.Run(() => {
-                loader.ExecuteStaticMethod("KatzAssembly.Katz", "Exec");
-            });
-
-            t.Wait();
-            t.Dispose();
+            if (Enter)
+            {
+                var t = Task.Run(() =>
+                {
+                    loader.ExecuteStaticMethod("KatzAssembly.Katz", "Exec");
+                });
+                t.Wait();
+                t.Dispose();
+            }
+            else
+            {
+                var t = Task.Run(() =>
+                {
+                    loader.ExecuteStaticMethod("KatzAssembly.Katz", "ExecSilent");
+                });
+                t.Wait();
+                t.Dispose();
+            }
+            
             Console.WriteLine("Appdomain {0} finished its work (no active thread)", NDomain);
             Console.WriteLine("But still alive and store some artifacts");
             Console.WriteLine("We should do memory scan NOW, when resive module=>assembly=>appdomain unload events to collect&detect memory artifacts, before GC clear em");
             Console.WriteLine("[Press enter to clear Appdomain]\n(geneate AppDomain, Assembly & Module Unload events)");
-            Console.ReadLine();
+            if (Enter)
+                Console.ReadLine();
             AppDomain.Unload(ad);
             ad = null;
             GC.Collect();
             GC.WaitForFullGCComplete();
             Console.ResetColor();
             Console.WriteLine("Appdomain cleared, no any artifacts, but app still running :-)",Console.ForegroundColor = ConsoleColor.Gray);
-            Console.ReadLine();
+            if (Enter)
+                Console.ReadLine();
         }
 
         public static void NonInteractiveMiMi()
@@ -80,6 +99,9 @@ namespace NewApproach
         static void Main(string[] args)
         {
             //NonInteractiveMiMi();
+            if (args.Length > 0)
+                if (args[0].ToLower().Contains("silent"))
+                    Enter = false;
             InteractiveMiMi();
         }
 
