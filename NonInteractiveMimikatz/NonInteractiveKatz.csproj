@@ -8,10 +8,11 @@
     <OutputType>Library</OutputType>
     <RootNamespace>NonInteractiveMimikatz</RootNamespace>
     <AssemblyName>NonInteractiveMimikatz</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -112,14 +113,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Resources\IV.bin" />
-    <None Include="Resources\key.bin" />
-    <None Include="Resources\Win32powerkatz.enc" />
-    <None Include="Resources\x64powerkatz.enc" />
+    <EmbeddedResource Include="Resources\IV.bin" />
+    <EmbeddedResource Include="Resources\key.bin" />
+    <EmbeddedResource Include="Resources\Win32powerkatz.enc" />
+    <EmbeddedResource Include="Resources\x64powerkatz.enc" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

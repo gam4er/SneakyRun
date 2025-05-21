@@ -106,10 +106,10 @@ namespace KatzAssembly
         public static void Exec()
         {
             AllocConsole();
-            Console.WriteLine("=37=");
-            Console.WriteLine("So, GC now allocated AppDomain, Assembly and Module in memory");
-            Console.WriteLine("Now our AppDomain, Assembly and Module where scanned via AMSI, but no any detections. Why?");
-            Console.WriteLine("Memory stay clear too, because Mimikatz payload, that contains in assembly, are encrypted  :-)");
+            //Console.WriteLine("=37=");
+            //Console.WriteLine("So, GC now allocated AppDomain, Assembly and Module in memory");
+            //Console.WriteLine("Now our AppDomain, Assembly and Module where scanned via AMSI, but no any detections. Why?");
+            //Console.WriteLine("Memory stay clear too, because Mimikatz payload, that contains in assembly, are encrypted  :-)");
             Console.WriteLine("Ready for unpack and execute\nEntering red zone - lots of detecable artifacts\n[press enter to unpack & execute Mimikatz]", Console.ForegroundColor = ConsoleColor.Red );
             if (Enter)
                 Console.ReadLine();

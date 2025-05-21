@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KatzAssembly</RootNamespace>
     <AssemblyName>KatzAssembly</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -123,29 +123,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Win32mimikatz.enc" />
-    <EmbeddedResource Include="Resources\x64mimikatz.enc" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\IV.bin" />
-    <EmbeddedResource Include="Resources\key.bin" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="KatzAssemblyKey.snk" />
+    <None Include="Properties\IV.bin" />
+    <None Include="Properties\key.bin" />
+    <None Include="Properties\Win32mimikatz.enc" />
+    <None Include="Properties\x64mimikatz.enc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)\Crypt\$(OutDir)Crypt.exe
-copy $(SolutionDir)mimikatz_trunk\IV.bin $(ProjectDir)Resources\IV.bin
-copy $(SolutionDir)mimikatz_trunk\key.bin $(ProjectDir)Resources\key.bin
-copy $(SolutionDir)mimikatz_trunk\Win32mimikatz.enc $(ProjectDir)Resources\Win32mimikatz.enc
-copy $(SolutionDir)mimikatz_trunk\x64mimikatz.enc $(ProjectDir)Resources\x64mimikatz.enc</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

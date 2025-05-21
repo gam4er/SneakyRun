@@ -6,7 +6,7 @@ using System.IO;
 using System.Security.Cryptography;
 
 
-namespace SSploit.Misc
+namespace NonInteractiveKatz
 {
     public static class Utilities
     {
@@ -24,8 +24,8 @@ namespace SSploit.Misc
             }
         }
 
-        static readonly byte[] myIV = NonInteractiveMimikatz.Properties.Resources.IV; //new byte[] { 40, 58, 32, 174, 187, 91, 201, 68, 81, 201, 230, 98, 222, 237, 26, 145 };
-        static readonly byte[] myKey = NonInteractiveMimikatz.Properties.Resources.key;// new byte[] { 141, 46, 84, 223, 171, 106, 191, 231, 223, 254, 202, 22, 25, 216, 114, 211, 134, 201, 239, 179, 80, 64, 238, 106, 174, 7, 173, 31, 14, 142, 140, 179 };
+        static readonly byte[] myIV = Properties.Resources.IV; //new byte[] { 40, 58, 32, 174, 187, 91, 201, 68, 81, 201, 230, 98, 222, 237, 26, 145 };
+        static readonly byte[] myKey = Properties.Resources.key;// new byte[] { 141, 46, 84, 223, 171, 106, 191, 231, 223, 254, 202, 22, 25, 216, 114, 211, 134, 201, 239, 179, 80, 64, 238, 106, 174, 7, 173, 31, 14, 142, 140, 179 };
 
 
         public static byte[] Encrypt(byte[] data)
